@@ -73,6 +73,7 @@ END AS Age_group
 FROM `retail`.`retail_sales`.`1782214138464_bright_tv_dataset`;
 
 ---------------------------------------------------------------------
+CREATE OR REPLACE TEMPORARY TABLE processed_userprofiles AS (
 SELECT
 UserID,
 
@@ -118,8 +119,10 @@ WHEN Age > 50 AND AGE <=60  THEN 'Elder: 51 - 60'
 WHEN Age > 60 THEN '07.Pensioner: >60'
 END AS Age_group
 
-FROM `retail`.`retail_sales`.`1782214138464_bright_tv_dataset`;
+FROM `retail`.`retail_sales`.`1782214138464_bright_tv_dataset`);
 
-
+select count (*) as cnt,
+count(distinct userid) AS subs
+from processed_userprofiles;
 ------------------------------------------------------------------------
 
